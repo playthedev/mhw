@@ -1,26 +1,288 @@
 @import "tailwindcss";
+/* v2 */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Printing a certificate/invoice should show only that content —
+   not the dashboard header/sidebar chrome that wraps it. */
+@media print {
+  body:has(.print-area) header {
+    display: none !important;
+  }
+  body:has(.print-area) main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
   }
 }
 
+:root,
+.dark {
+  --primary: #4f5eff;
+  --primary-dark: #3a3df5;
+  --gold: #f4c542;
+  --purple: #a855f7;
+  --bg: #0a0a0f;
+  --bg-alt: #0d0d16;
+  --bg-card: #111118;
+  --bg-card-hover: #16161f;
+  --bg-deep: #080810;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.05);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --text: #e8e8f0;
+  --text-muted: #8888a0;
+  --text-subtle: #aaaabc;
+  --text-faint: #555570;
+  --surface-faint: rgba(255, 255, 255, 0.02);
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.1);
+  --surface-strong: rgba(255, 255, 255, 0.2);
+  --color-scheme: dark;
+}
+
+.light {
+  --primary: #4f5eff;
+  --primary-dark: #3a3df5;
+  --gold: #ca9a04;
+  --purple: #a855f7;
+  --bg: #f7f7fb;
+  --bg-alt: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f1f7;
+  --bg-deep: #eeeef5;
+  --border: rgba(10, 10, 20, 0.08);
+  --border-soft: rgba(10, 10, 20, 0.05);
+  --border-strong: rgba(10, 10, 20, 0.18);
+  --text: #14141f;
+  --text-muted: #5b5b75;
+  --text-subtle: #44445c;
+  --text-faint: #8888a0;
+  --surface-faint: rgba(10, 10, 30, 0.02);
+  --surface: rgba(10, 10, 30, 0.04);
+  --surface-hover: rgba(10, 10, 30, 0.08);
+  --surface-strong: rgba(10, 10, 30, 0.12);
+  --color-scheme: light;
+}
+
+html {
+  color-scheme: var(--color-scheme);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-plus-jakarta);
+
+  /* Primary (brand blue / indigo) */
+  --color-primary-50: #eef0ff;
+  --color-primary-100: #e0e3ff;
+  --color-primary-200: #c7ccff;
+  --color-primary-300: #a5acff;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #4f5eff;
+  --color-primary-600: #3a3df5;
+  --color-primary-700: #2f2fd6;
+  --color-primary-800: #2727ac;
+  --color-primary-900: #232587;
+
+  /* Gold accent */
+  --color-gold-50: #fefbe8;
+  --color-gold-100: #fdf3c4;
+  --color-gold-200: #fbe88c;
+  --color-gold-300: #f8d94a;
+  --color-gold-400: var(--gold);
+  --color-gold-500: #eab308;
+  --color-gold-600: #ca9a04;
+
+  /* Purple accent (extend built-in to ensure 600 etc.) */
+  --color-purple-400: #c084fc;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #4f5eff; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3df5; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #4f5eff 0%, #a855f7 50%, #f4c542 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #818cf8 0%, #4f5eff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism */
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 3px rgba(20, 20, 40, 0.06);
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(79, 94, 255, 0.25);
+  box-shadow: 0 8px 40px rgba(79, 94, 255, 0.1);
+}
+
+/* Glow */
+.glow-primary {
+  box-shadow: 0 0 60px rgba(79, 94, 255, 0.2), 0 0 120px rgba(79, 94, 255, 0.05);
+}
+
+.glow-gold {
+  box-shadow: 0 0 60px rgba(244, 197, 66, 0.15);
+}
+
+/* Background patterns */
+.hero-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(79, 94, 255, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 60% 80%, rgba(244, 197, 66, 0.05) 0%, transparent 50%),
+    var(--bg);
+}
+
+.section-bg-alt {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 50%, var(--bg) 100%);
+}
+
+/* Dot grid pattern */
+.dot-grid {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+/* One-shot entrance for the navbar — ends at the natural visible state,
+   so the header stays visible even if the animation is interrupted. */
+.animate-slide-down { animation: slide-down 0.6s ease-out; }
+
+/* Shimmer button effect */
+.shimmer-btn {
+  background: linear-gradient(90deg, #4f5eff 0%, #818cf8 50%, #4f5eff 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Section padding */
+.section-py {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .section-py { padding-top: 3rem; padding-bottom: 3rem; }
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Article body typography */
+.prose-custom p {
+  color: var(--text-subtle);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+
+.prose-custom h2 {
+  color: var(--text);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-plus-jakarta), sans-serif;
+}
+
+.prose-custom strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.prose-custom ol,
+.prose-custom ul {
+  color: var(--text-subtle);
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+}
+
+.prose-custom li {
+  margin-bottom: 0.4rem;
 }

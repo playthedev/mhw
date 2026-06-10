@@ -1,0 +1,20 @@
+export default {
+  name: "article",
+  title: "Study Article",
+  type: "document",
+  fields: [
+    { name: "title", title: "Title", type: "string", validation: (R: any) => R.required() },
+    { name: "slug", title: "Slug", type: "slug", options: { source: "title" } },
+    { name: "excerpt", title: "Excerpt", type: "text", rows: 3 },
+    { name: "content", title: "Content", type: "array", of: [{ type: "block" }, { type: "image" }] },
+    { name: "thumbnail", title: "Thumbnail", type: "image", options: { hotspot: true } },
+    { name: "author", title: "Author", type: "string" },
+    { name: "authorRole", title: "Author Role", type: "string" },
+    { name: "category", title: "Category", type: "string", options: { list: ["Accounting", "NGO", "Tax", "Compliance", "Career"] } },
+    { name: "tags", title: "Tags", type: "array", of: [{ type: "string" }] },
+    { name: "readTime", title: "Read Time (minutes)", type: "number" },
+    { name: "publishedAt", title: "Published At", type: "datetime" },
+    { name: "featured", title: "Featured", type: "boolean", initialValue: false },
+  ],
+  orderings: [{ title: "Published Date, New", name: "publishedAtDesc", by: [{ field: "publishedAt", direction: "desc" }] }],
+}
