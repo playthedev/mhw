@@ -14,8 +14,8 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined)
 const STORAGE_KEY = "mhw-theme"
 
 function getInitialTheme(): Theme {
-  if (typeof document === "undefined") return "dark"
-  return document.documentElement.classList.contains("light") ? "light" : "dark"
+  if (typeof document === "undefined") return "light"
+  return document.documentElement.classList.contains("dark") ? "dark" : "light"
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {

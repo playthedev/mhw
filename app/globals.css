@@ -14,7 +14,6 @@
   }
 }
 
-:root,
 .dark {
   --primary: #4f5eff;
   --primary-dark: #3a3df5;
@@ -39,6 +38,7 @@
   --color-scheme: dark;
 }
 
+:root,
 .light {
   --primary: #4f5eff;
   --primary-dark: #3a3df5;

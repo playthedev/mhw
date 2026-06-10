@@ -8,10 +8,10 @@ const themeInitScript = `
 (function () {
   try {
     var theme = localStorage.getItem("mhw-theme");
-    if (theme !== "light" && theme !== "dark") theme = "dark";
+    if (theme !== "light" && theme !== "dark") theme = "light";
     document.documentElement.classList.add(theme);
   } catch (e) {
-    document.documentElement.classList.add("dark");
+    document.documentElement.classList.add("light");
   }
 })();
 `
