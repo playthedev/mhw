@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
 type Theme = "dark" | "light"
 
@@ -13,13 +13,12 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined)
 
 const STORAGE_KEY = "mhw-theme"
 
-function getInitialTheme(): Theme {
-  if (typeof document === "undefined") return "light"
-  return document.documentElement.classList.contains("dark") ? "dark" : "light"
-}
-
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme)
+  const [theme, setTheme] = useState<Theme>("light")
+
+  useEffect(() => {
+    setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light")
+  }, [])
 
   const toggleTheme = () => {
     setTheme((prev) => {
