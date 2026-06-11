@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
 import { ThemeProvider } from "@/components/theme/ThemeProvider"
+import WhatsAppButton from "@/components/ui/WhatsAppButton"
 
 const themeInitScript = `
 (function () {
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         <ThemeProvider>
           {children}
+          <WhatsAppButton />
           <Toaster
             position="top-right"
             toastOptions={{
