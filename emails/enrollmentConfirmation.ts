@@ -61,10 +61,6 @@ export function enrollmentOwnerNotificationTemplate(data: EnrollmentEmailData & 
       <p style="${baseStyles.label}">Razorpay Payment ID</p>
       <p style="color:#8888a0;font-size:12px;font-family:monospace;margin:4px 0 0;word-break:break-all;">${paymentId}</p>
     </div>
-
-    <div style="text-align:center;margin:32px 0;">
-      <a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin/enrollments" style="${baseStyles.btn}">View in Admin Panel</a>
-    </div>
   `
   return emailWrapper(content)
 }

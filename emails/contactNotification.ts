@@ -50,10 +50,6 @@ export function contactOwnerNotificationTemplate(data: ContactData): string {
     <div style="text-align:center;margin:32px 0;">
       <a href="mailto:${email}" style="${baseStyles.btn}">Reply to ${name}</a>
     </div>
-
-    <div style="text-align:center;">
-      <a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin/contacts" style="color:#818cf8;font-size:13px;">View in Admin Panel →</a>
-    </div>
   `
   return emailWrapper(content)
 }

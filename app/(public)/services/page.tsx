@@ -377,7 +377,7 @@ export default function ServicesPage() {
             </h2>
             <p className="text-[var(--text-muted)] mb-8">Let our experts guide you. Book a free consultation and we'll recommend the right services for your organization.</p>
             <button
-              onClick={() => setModalService("")}
+              onClick={() => setModalService("Other")}
               className="inline-flex items-center gap-2 shimmer-btn text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-primary-500/25 hover:scale-105 transition-all duration-200"
             >
               Book Free Consultation
