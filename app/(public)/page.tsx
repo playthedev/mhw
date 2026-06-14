@@ -1,3 +1,4 @@
+import HeroBannerSlider from "@/components/sections/HeroBannerSlider"
 import HeroSection from "@/components/sections/HeroSection"
 import StatsSection from "@/components/sections/StatsSection"
 import ServicesPreview from "@/components/sections/ServicesPreview"
@@ -9,6 +10,7 @@ import CTASection from "@/components/sections/CTASection"
 export default function HomePage() {
   return (
     <>
+      <HeroBannerSlider />
       <HeroSection />
       <StatsSection />
       <ServicesPreview />

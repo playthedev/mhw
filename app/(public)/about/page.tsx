@@ -71,7 +71,6 @@ const milestones = [
   { year: "2017", event: "Expanded to corporate advisory and GST/income tax services" },
   { year: "2019", event: "Launched online training platform with 10 courses" },
   { year: "2021", event: "Crossed 200+ active clients milestone" },
-  { year: "2023", event: "Launched NGO Internship Program" },
   { year: "2026", event: "500+ clients, 2800+ students enrolled across India" },
 ]
 
