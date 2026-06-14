@@ -4,10 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Briefcase, LayoutDashboard, LogOut, User, Loader2 } from "lucide-react"
+import { Menu, X, Briefcase, LayoutDashboard, LogOut, User, Loader2, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import ThemeToggle from "@/components/theme/ThemeToggle"
+import JoinUsModal, { type JoinUsCategory } from "@/components/ui/JoinUsModal"
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -16,6 +17,18 @@ const navLinks = [
   { label: "Study", href: "/study" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+]
+
+type JoinUsItem =
+  | { label: string; type: "category"; category: JoinUsCategory }
+  | { label: string; type: "link"; href: string }
+
+const joinUsItems: JoinUsItem[] = [
+  { label: "Professional", type: "category", category: "professional" },
+  { label: "Internship", type: "category", category: "internship" },
+  { label: "Career", type: "category", category: "career" },
+  { label: "For Professional Services", type: "link", href: "/services" },
+  { label: "For Trainings", type: "link", href: "/courses" },
 ]
 
 interface NavUser {
@@ -30,6 +43,9 @@ export default function Navbar() {
   const [user, setUser] = useState<NavUser | null>(null)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const [loggingOut, setLoggingOut] = useState(false)
+  const [joinUsOpen, setJoinUsOpen] = useState(false)
+  const [joinUsMobileOpen, setJoinUsMobileOpen] = useState(false)
+  const [joinUsCategory, setJoinUsCategory] = useState<JoinUsCategory | null>(null)
   const pathname = usePathname()
   const router = useRouter()
 
@@ -42,7 +58,20 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false)
     setUserMenuOpen(false)
+    setJoinUsOpen(false)
+    setJoinUsMobileOpen(false)
   }, [pathname])
+
+  const handleJoinUsItem = (item: JoinUsItem) => {
+    setJoinUsOpen(false)
+    setJoinUsMobileOpen(false)
+    if (item.type === "category") {
+      setMobileOpen(false)
+      setJoinUsCategory(item.category)
+    } else {
+      router.push(item.href)
+    }
+  }
 
   useEffect(() => {
     fetch("/api/auth/me")
@@ -109,6 +138,46 @@ export default function Navbar() {
                   <span className="relative z-10">{link.label}</span>
                 </Link>
               ))}
+
+              {/* Join Us dropdown */}
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setJoinUsOpen((o) => !o)}
+                  className={cn(
+                    "flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+                    joinUsOpen ? "text-(--text)" : "text-[var(--text-muted)] hover:text-(--text)"
+                  )}
+                >
+                  Join Us
+                  <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", joinUsOpen && "rotate-180")} />
+                </button>
+                <AnimatePresence>
+                  {joinUsOpen && (
+                    <>
+                      <div className="fixed inset-0 z-40" onClick={() => setJoinUsOpen(false)} />
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute right-0 top-full mt-2 w-56 glass-card rounded-xl border border-(--border) overflow-hidden shadow-xl shadow-black/40 py-1 z-50"
+                      >
+                        {joinUsItems.map((item) => (
+                          <button
+                            key={item.label}
+                            type="button"
+                            onClick={() => handleJoinUsItem(item)}
+                            className="w-full text-left px-4 py-2.5 text-sm text-[var(--text-muted)] hover:text-(--text) hover:bg-(--surface) transition-all"
+                          >
+                            {item.label}
+                          </button>
+                        ))}
+                      </motion.div>
+                    </>
+                  )}
+                </AnimatePresence>
+              </div>
             </nav>
 
             {/* CTA / Auth */}
@@ -211,6 +280,41 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
+
+                {/* Join Us */}
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: navLinks.length * 0.05 }}>
+                  <button
+                    type="button"
+                    onClick={() => setJoinUsMobileOpen((o) => !o)}
+                    className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-[var(--text-muted)] hover:text-(--text) hover:bg-(--surface) transition-all"
+                  >
+                    Join Us
+                    <ChevronDown className={cn("w-4 h-4 transition-transform", joinUsMobileOpen && "rotate-180")} />
+                  </button>
+                  <AnimatePresence>
+                    {joinUsMobileOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden pl-4"
+                      >
+                        {joinUsItems.map((item) => (
+                          <button
+                            key={item.label}
+                            type="button"
+                            onClick={() => handleJoinUsItem(item)}
+                            className="w-full text-left px-4 py-2.5 rounded-xl text-sm text-[var(--text-muted)] hover:text-(--text) hover:bg-(--surface) transition-all"
+                          >
+                            {item.label}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+
                 <div className="pt-3 border-t border-(--border-soft) flex flex-col gap-2">
                   {user ? (
                     <>
@@ -246,6 +350,8 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <JoinUsModal category={joinUsCategory} onClose={() => setJoinUsCategory(null)} />
     </>
   )
 }

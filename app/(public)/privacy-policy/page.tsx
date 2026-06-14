@@ -151,7 +151,7 @@ export default function PrivacyPolicyPage() {
               <p>MHW Consultancy Pvt. Ltd.</p>
               <p>Kasra no 839, First Floor, Aman Vihar, Kadipur, Delhi</p>
               <p>Email: <a href="mailto:info@mhwconsultancy.in" className="text-primary-400 hover:underline">info@mhwconsultancy.in</a></p>
-              <p>Phone: <a href="tel:+918802660308" className="text-primary-400 hover:underline">+91 88026 60308</a></p>
+              <p>Phone: <a href="tel:+917065127127" className="text-primary-400 hover:underline">+91 70651 27127</a></p>
             </div>
           </motion.div>
 

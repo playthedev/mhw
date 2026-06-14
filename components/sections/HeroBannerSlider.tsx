@@ -22,11 +22,6 @@ const slides = [
     subtitle: "Hands-on courses designed by industry-certified trainers.",
   },
   {
-    image: "https://images.unsplash.com/photo-1551836022-d5dbb9091624?q=80&w=2070&auto=format&fit=crop",
-    title: "Internship Program 2026 — Now Open",
-    subtitle: "Kickstart your career with real-world accounting and NGO experience.",
-  },
-  {
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070&auto=format&fit=crop",
     title: "Empowering Businesses & NGOs Nationwide",
     subtitle: "500+ clients trust us for accounting, audit, and growth strategy.",
@@ -50,31 +45,31 @@ export default function HeroBannerSlider() {
   }
 
   return (
-    <div className="relative w-full h-[60vh] sm:h-[70vh] lg:h-[85vh] mt-16 lg:mt-20 overflow-hidden">
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={slides[active].image}
-            alt={slides[active].title}
-            fill
-            priority={active === 0}
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
-        </motion.div>
-      </AnimatePresence>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 lg:mt-20 pt-6 sm:pt-8">
+      <div className="relative w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] rounded-3xl overflow-hidden">
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={slides[active].image}
+              alt={slides[active].title}
+              fill
+              priority={active === 0}
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+          </motion.div>
+        </AnimatePresence>
 
-      {/* Slide caption */}
-      <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14">
-        <div className="max-w-7xl mx-auto">
+        {/* Slide caption */}
+        <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -92,39 +87,39 @@ export default function HeroBannerSlider() {
             </motion.div>
           </AnimatePresence>
         </div>
-      </div>
 
-      {/* Prev / Next arrows */}
-      <button
-        type="button"
-        aria-label="Previous slide"
-        onClick={() => goTo(active - 1)}
-        className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
-      <button
-        type="button"
-        aria-label="Next slide"
-        onClick={() => goTo(active + 1)}
-        className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
+        {/* Prev / Next arrows */}
+        <button
+          type="button"
+          aria-label="Previous slide"
+          onClick={() => goTo(active - 1)}
+          className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next slide"
+          onClick={() => goTo(active + 1)}
+          className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 right-4 sm:right-8 flex items-center gap-2">
-        {slides.map((slide, i) => (
-          <button
-            key={slide.image}
-            type="button"
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() => goTo(i)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              i === active ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
-            }`}
-          />
-        ))}
+        {/* Dots */}
+        <div className="absolute bottom-4 right-4 sm:right-8 flex items-center gap-2">
+          {slides.map((slide, i) => (
+            <button
+              key={slide.image}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => goTo(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === active ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )

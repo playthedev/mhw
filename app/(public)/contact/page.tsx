@@ -7,7 +7,7 @@ import { toast } from "sonner"
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "info@mhwconsultancy.in", href: "mailto:info@mhwconsultancy.in" },
-  { icon: Phone, label: "Phone", value: "+91 88026 60308", href: "tel:+918802660308" },
+  { icon: Phone, label: "Phone", value: "+91 70651 27127", href: "tel:+917065127127" },
   { icon: MapPin, label: "Address", value: "Kasra no 839, First Floor, Aman Vihar, Kadipur, Delhi", href: "#" },
 ]
 

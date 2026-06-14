@@ -177,7 +177,7 @@ export default function RefundPolicyPage() {
             </p>
             <div className="space-y-1 text-sm text-[var(--text-muted)]">
               <p>Email: <a href="mailto:info@mhwconsultancy.in" className="text-primary-400 hover:underline">info@mhwconsultancy.in</a></p>
-              <p>Phone: <a href="tel:+918802660308" className="text-primary-400 hover:underline">+91 88026 60308</a></p>
+              <p>Phone: <a href="tel:+917065127127" className="text-primary-400 hover:underline">+91 70651 27127</a></p>
               <p className="pt-1 text-xs">Support hours: Monday – Saturday, 10 AM – 6 PM IST</p>
             </div>
           </motion.div>

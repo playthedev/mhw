@@ -4,6 +4,8 @@ import { welcomeTemplate } from "@/emails/welcome"
 import { forgotPasswordTemplate } from "@/emails/forgotPassword"
 import { enrollmentConfirmationTemplate, enrollmentOwnerNotificationTemplate } from "@/emails/enrollmentConfirmation"
 import { contactConfirmationTemplate, contactOwnerNotificationTemplate } from "@/emails/contactNotification"
+import { joinUsConfirmationTemplate, joinUsOwnerNotificationTemplate } from "@/emails/joinUsNotification"
+import type { JoinUsSubmission } from "@/lib/models"
 
 const resend = new Resend(process.env.RESEND_API_KEY!)
 const FROM = "MHW Consultancy <onboarding@resend.dev>"
@@ -81,5 +83,28 @@ export async function sendContactEmails(data: {
     to: OWNER_EMAIL,
     subject: `New Contact: ${data.subject} from ${data.name}`,
     html: contactOwnerNotificationTemplate(data),
+  })
+}
+
+const joinUsCategoryLabels: Record<string, string> = {
+  professional: "Professional",
+  internship: "Internship",
+  career: "Career",
+}
+
+export async function sendJoinUsEmails(data: JoinUsSubmission) {
+  // Confirmation to the applicant
+  await resend.emails.send({
+    from: FROM,
+    to: data.email,
+    subject: "We received your application — MHW Consultancy",
+    html: joinUsConfirmationTemplate(data),
+  })
+  // Notification to owner
+  await resend.emails.send({
+    from: FROM,
+    to: OWNER_EMAIL,
+    subject: `New ${joinUsCategoryLabels[data.category] || data.category} Application: ${data.name}`,
+    html: joinUsOwnerNotificationTemplate(data),
   })
 }

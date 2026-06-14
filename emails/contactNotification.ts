@@ -19,7 +19,7 @@ export function contactConfirmationTemplate(data: ContactData): string {
       <p style="color:#8888a0;font-size:13px;line-height:1.6;margin:8px 0 0;">${data.message}</p>
     </div>
 
-    <p style="${baseStyles.small}">In the meantime, feel free to call us at <a href="tel:+918802660308" style="color:#818cf8;">+91 88026 60308</a> for urgent queries.</p>
+    <p style="${baseStyles.small}">In the meantime, feel free to call us at <a href="tel:+917065127127" style="color:#818cf8;">+91 70651 27127</a> for urgent queries.</p>
 
     <hr style="${baseStyles.divider}" />
     <p style="${baseStyles.small}">Office hours: Mon–Fri 9 AM–6 PM · Sat 10 AM–2 PM IST</p>

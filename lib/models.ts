@@ -39,3 +39,25 @@ export interface ContactSubmission {
   status: "new" | "read" | "replied"
   createdAt: Date
 }
+
+export type JoinUsCategory = "professional" | "internship" | "career"
+
+export interface JoinUsSubmission {
+  _id?: ObjectId
+  category: JoinUsCategory
+  name: string
+  mobile: string
+  email: string
+  // Professional & Internship
+  professionSector?: string
+  // Professional only
+  yearsOfExperience?: string
+  // Internship & Career
+  qualification?: string
+  // Career only
+  position?: string
+  why: string
+  resumeUrl?: string
+  status: "new" | "reviewed" | "contacted"
+  createdAt: Date
+}

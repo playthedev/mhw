@@ -24,7 +24,7 @@ const footerLinks = {
 
 const socials = [
   {
-    href: "https://www.linkedin.com/company/mhw-consultancy",
+    href: "https://www.linkedin.com/company/mhw-consultancy-pvt-ltd/about/?viewAsMember=true",
     label: "LinkedIn",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -33,7 +33,7 @@ const socials = [
     ),
   },
   {
-    href: "https://www.instagram.com/mhwconsultancy",
+    href: "https://www.instagram.com/mhwconsultancy/",
     label: "Instagram",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -108,11 +108,11 @@ export default function Footer() {
                 </div>
                 info@mhwconsultancy.in
               </a>
-              <a href="tel:+918802660308" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-(--text) transition-colors group">
+              <a href="tel:+917065127127" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-(--text) transition-colors group">
                 <div className="w-8 h-8 rounded-lg bg-(--surface) flex items-center justify-center group-hover:bg-primary-500/10 transition-colors">
                   <Phone className="w-4 h-4 text-primary-400" />
                 </div>
-                +91 88026 60308
+                +91 70651 27127
               </a>
               <div className="flex items-start gap-3 text-sm text-[var(--text-muted)]">
                 <div className="w-8 h-8 rounded-lg bg-(--surface) flex items-center justify-center flex-shrink-0 mt-0.5">
