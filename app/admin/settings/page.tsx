@@ -53,7 +53,7 @@ export default function SettingsAdminPage() {
           </div>
           <div className="p-6 space-y-3">
             <QuickLink label="MongoDB Atlas — manage database" href="https://cloud.mongodb.com" />
-            <QuickLink label="Resend — email dashboard" href="https://resend.com" />
+            <QuickLink label="Webmail — email dashboard" href="https://mhwconsultancy.com/webmail" />
             <QuickLink label="Stripe — payment dashboard" href="https://dashboard.stripe.com" />
           </div>
         </div>
