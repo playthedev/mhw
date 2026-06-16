@@ -24,14 +24,18 @@ export async function POST(req: NextRequest) {
       createdAt: new Date(),
     })
 
-    // Send emails (fire and forget — don't fail the request if email fails)
-    sendContactEmails({
-      name,
-      email,
-      phone: phone || undefined,
-      subject: service || "General Inquiry",
-      message,
-    }).catch((err) => console.error("Contact email error:", err))
+    try {
+      await sendContactEmails({
+        name,
+        email,
+        phone: phone || undefined,
+        subject: service || "General Inquiry",
+        message,
+      })
+    } catch (err) {
+      console.error("Contact email error:", err)
+      return NextResponse.json({ error: "Form saved but email failed to send. We will contact you shortly." }, { status: 500 })
+    }
 
     return NextResponse.json({ success: true })
   } catch (err) {
