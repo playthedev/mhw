@@ -8,7 +8,7 @@ import {
 import Link from "next/link"
 import { useState } from "react"
 import { createPortal } from "react-dom"
-import { formatPrice } from "@/lib/utils"
+import { formatPrice, formatDate, hasActiveOffer } from "@/lib/utils"
 import EnrollButton from "@/components/ui/EnrollButton"
 import type { Course } from "@/lib/courses"
 
@@ -116,7 +116,12 @@ export default function CourseDetailClient({ course, related, isEnrolled }: { co
           </>
         ) : (
           <>
-            <span className="text-(--text) font-bold text-xl">{formatPrice(course.price)}</span>
+            <span className="flex items-baseline gap-2">
+              <span className="text-(--text) font-bold text-xl">{formatPrice(course.price)}</span>
+              {hasActiveOffer(course) && (
+                <span className="text-xs text-[var(--text-muted)] line-through">{formatPrice(course.originalPrice!)}</span>
+              )}
+            </span>
             <EnrollButton courseId={course.id} courseName={course.title} price={course.price} />
           </>
         )}
@@ -392,8 +397,20 @@ function EnrollCard({ course, onPreview, isEnrolled }: { course: Course; onPrevi
           </>
         ) : (
           <>
+            {hasActiveOffer(course) && (
+              <div className="mb-4 px-3 py-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium">
+                50% off · Register before {formatDate(course.offerEndsAt!)}
+                {course.batchStartsAt && <> · Batch starts {formatDate(course.batchStartsAt)}</>}
+              </div>
+            )}
+
             <div className="flex items-baseline justify-between mb-2">
-              <span className="text-3xl font-bold text-(--text)">{formatPrice(course.price)}</span>
+              <span className="flex items-baseline gap-2">
+                <span className="text-3xl font-bold text-(--text)">{formatPrice(course.price)}</span>
+                {hasActiveOffer(course) && (
+                  <span className="text-sm text-[var(--text-muted)] line-through">{formatPrice(course.originalPrice!)}</span>
+                )}
+              </span>
               <span className="text-xs text-[var(--text-muted)]">One-time · GST invoice included</span>
             </div>
 

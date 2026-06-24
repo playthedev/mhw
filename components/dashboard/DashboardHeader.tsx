@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Briefcase, LayoutDashboard, BookOpen, LogOut, User, UserCog, Loader2 } from "lucide-react"
+import { LayoutDashboard, BookOpen, LogOut, User, UserCog, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import ThemeToggle from "@/components/theme/ThemeToggle"
+import Logo from "@/components/ui/Logo"
 
 const navLinks = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -51,14 +52,8 @@ export default function DashboardHeader({ initialName }: { initialName: string }
     <header className="sticky top-0 z-40 border-b border-(--border-soft) bg-[var(--bg-alt)]/95 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center">
-            <Briefcase className="w-4 h-4 text-(--text)" />
-          </div>
-          <span className="font-bold text-sm" style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>
-            <span className="text-(--text)">MHW</span>
-            <span className="gradient-text-blue"> Consultancy</span>
-          </span>
+        <Link href="/" className="flex items-center">
+          <Logo className="h-12 w-auto" />
         </Link>
 
         {/* Nav with active styling */}

@@ -5,11 +5,12 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import {
   LayoutDashboard, Users, CreditCard, MessageSquare,
-  BookOpen, Settings, ArrowLeft, Briefcase, LogOut, Receipt, Menu, X, Loader2,
+  BookOpen, Settings, ArrowLeft, LogOut, Receipt, Menu, X, Loader2,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import ThemeToggle from "@/components/theme/ThemeToggle"
+import Logo from "@/components/ui/Logo"
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -43,9 +44,7 @@ export default function AdminSidebar() {
       {/* Mobile top bar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 h-14 bg-[var(--bg-alt)] border-b border-(--border-soft)">
         <Link href="/admin" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center shadow-lg shadow-primary-500/25">
-            <Briefcase className="w-4 h-4 text-(--text)" />
-          </div>
+          <Logo className="h-11 w-auto" />
           <span className="text-(--text) font-bold text-sm" style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>Admin Panel</span>
         </Link>
         <div className="flex items-center gap-1">
@@ -78,13 +77,8 @@ export default function AdminSidebar() {
         {/* Logo */}
         <div className="p-6 border-b border-(--border-soft) flex items-center justify-between">
           <Link href="/admin" className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center shadow-lg shadow-primary-500/25">
-              <Briefcase className="w-5 h-5 text-(--text)" />
-            </div>
-            <div>
-              <div className="text-(--text) font-bold text-sm" style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>MHW Consultancy</div>
-              <div className="text-[var(--text-muted)] text-xs">Admin Panel</div>
-            </div>
+            <Logo className="h-14 w-auto" />
+            <div className="text-[var(--text-muted)] text-xs">Admin Panel</div>
           </Link>
           <button
             onClick={() => setOpen(false)}

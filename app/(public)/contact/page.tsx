@@ -6,9 +6,9 @@ import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2 } from "lucide-react"
 import { toast } from "sonner"
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "info@mhwconsultancy.in", href: "mailto:info@mhwconsultancy.in" },
+  { icon: Mail, label: "Email", value: "info@mhwconsultancy.com", href: "mailto:info@mhwconsultancy.com" },
   { icon: Phone, label: "Phone", value: "+91 70651 27127", href: "tel:+917065127127" },
-  { icon: MapPin, label: "Address", value: "Kasra no 839, First Floor, Aman Vihar, Kadipur, Delhi", href: "#" },
+  { icon: MapPin, label: "Address", value: "Kasra no 839, First Floor, Aman Vihar, Kadipur, Delhi - 110036", href: "#" },
 ]
 
 const services = [
@@ -18,6 +18,7 @@ const services = [
   "Corporate Advisory",
   "Training / Course",
   "Audit Support",
+  "Registration Services",
   "Other",
 ]
 

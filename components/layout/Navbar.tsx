@@ -4,11 +4,12 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Briefcase, LayoutDashboard, LogOut, User, Loader2, ChevronDown } from "lucide-react"
+import { Menu, X, LayoutDashboard, LogOut, User, Loader2, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import ThemeToggle from "@/components/theme/ThemeToggle"
 import JoinUsModal, { type JoinUsCategory } from "@/components/ui/JoinUsModal"
+import Logo from "@/components/ui/Logo"
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -107,14 +108,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40 transition-all duration-300">
-                <Briefcase className="w-5 h-5 text-(--text)" />
-              </div>
-              <span className="text-xl font-bold" style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>
-                <span className="text-(--text)">MHW</span>
-                <span className="gradient-text-blue"> Consultancy</span>
-              </span>
+            <Link href="/" className="flex items-center group">
+              <Logo className="h-14 w-auto" priority />
             </Link>
 
             {/* Desktop Nav */}

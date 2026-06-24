@@ -5,7 +5,7 @@ import { Suspense, useState, useEffect } from "react"
 import { Clock, Users, Star, Play, CheckCircle2, ArrowRight, Filter, Trophy, BookOpen, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { formatPrice } from "@/lib/utils"
+import { formatPrice, formatDate, hasActiveOffer } from "@/lib/utils"
 import EnrollButton from "@/components/ui/EnrollButton"
 import { courses } from "@/lib/courses"
 import { toast } from "sonner"
@@ -159,7 +159,12 @@ function CoursesPageContent() {
                           </span>
                         )}
                       </div>
-                      <span className="text-xl font-bold text-(--text) flex-shrink-0">{formatPrice(course.price)}</span>
+                      <div className="flex flex-col items-end flex-shrink-0">
+                        <span className="text-xl font-bold text-(--text)">{formatPrice(course.price)}</span>
+                        {hasActiveOffer(course) && (
+                          <span className="text-xs text-[var(--text-muted)] line-through">{formatPrice(course.originalPrice!)}</span>
+                        )}
+                      </div>
                     </div>
 
                     <Link href={`/courses/${course.id}`}>
@@ -171,6 +176,12 @@ function CoursesPageContent() {
                       </h3>
                     </Link>
                     <p className="text-[var(--text-muted)] text-sm mb-5">{course.description}</p>
+
+                    {hasActiveOffer(course) && (
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium mb-5">
+                        50% off · Register before {formatDate(course.offerEndsAt!)}
+                      </div>
+                    )}
 
                     <div className="flex items-center gap-4 text-xs text-[var(--text-muted)] mb-5">
                       <div className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" />{course.duration}</div>
@@ -293,8 +304,11 @@ function CoursesPageContent() {
 
                   {/* Footer */}
                   <div className="mt-auto pt-4 border-t border-(--border-soft) flex items-center justify-between gap-3">
-                    <div>
+                    <div className="flex items-baseline gap-2">
                       <span className="text-xl font-bold text-(--text)">{formatPrice(course.price)}</span>
+                      {hasActiveOffer(course) && (
+                        <span className="text-xs text-[var(--text-muted)] line-through">{formatPrice(course.originalPrice!)}</span>
+                      )}
                     </div>
                     <div className="flex items-center gap-2">
                       <Link

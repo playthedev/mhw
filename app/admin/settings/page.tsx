@@ -22,7 +22,7 @@ export default function SettingsAdminPage() {
           <div className="p-6 space-y-5">
             <SettingRow icon={<Globe className="w-4 h-4" />} label="Company Name" value="MHW Consultancy Pvt. Ltd." />
             <SettingRow icon={<MapPin className="w-4 h-4" />} label="Address" value="India" />
-            <SettingRow icon={<Mail className="w-4 h-4" />} label="Contact Email" value="info@mhwconsultancy.in" />
+            <SettingRow icon={<Mail className="w-4 h-4" />} label="Contact Email" value="info@mhwconsultancy.com" />
             <SettingRow icon={<Phone className="w-4 h-4" />} label="Phone" value="+91 98765 43210" />
           </div>
         </div>

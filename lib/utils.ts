@@ -20,3 +20,8 @@ export function formatDate(date: string | Date) {
     day: "numeric",
   }).format(new Date(date))
 }
+
+export function hasActiveOffer(course: { originalPrice?: number; offerEndsAt?: string }) {
+  if (!course.originalPrice || !course.offerEndsAt) return false
+  return new Date(course.offerEndsAt) >= new Date()
+}

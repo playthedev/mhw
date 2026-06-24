@@ -1,12 +1,13 @@
 import Link from "next/link"
-import { Briefcase, Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
+import Logo from "@/components/ui/Logo"
 
 const footerLinks = {
   Services: [
     { label: "Accounting", href: "/services#accounting" },
     { label: "NGO Compliance", href: "/services#ngo" },
     { label: "Tax Advisory", href: "/services#tax" },
-    { label: "Audit Support", href: "/services#audit" },
+    { label: "Registration Services", href: "/services#registration" },
   ],
   Courses: [
     { label: "NGO Management", href: "/courses" },
@@ -87,14 +88,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center shadow-lg shadow-primary-500/25">
-                <Briefcase className="w-5 h-5 text-(--text)" />
-              </div>
-              <span className="text-xl font-bold" style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>
-                <span className="text-(--text)">MHW</span>
-                <span className="gradient-text-blue"> Consultancy</span>
-              </span>
+            <Link href="/" className="flex items-center mb-5 group">
+              <Logo className="h-16 w-auto" />
             </Link>
             <p className="text-[var(--text-muted)] text-sm leading-relaxed mb-6 max-w-xs">
               Empowering NGOs, businesses, and individuals with professional consulting, compliance, and training services across India.
@@ -102,11 +97,11 @@ export default function Footer() {
 
             {/* Contact info */}
             <div className="space-y-3">
-              <a href="mailto:info@mhwconsultancy.in" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-(--text) transition-colors group">
+              <a href="mailto:info@mhwconsultancy.com" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-(--text) transition-colors group">
                 <div className="w-8 h-8 rounded-lg bg-(--surface) flex items-center justify-center group-hover:bg-primary-500/10 transition-colors">
                   <Mail className="w-4 h-4 text-primary-400" />
                 </div>
-                info@mhwconsultancy.in
+                info@mhwconsultancy.com
               </a>
               <a href="tel:+917065127127" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-(--text) transition-colors group">
                 <div className="w-8 h-8 rounded-lg bg-(--surface) flex items-center justify-center group-hover:bg-primary-500/10 transition-colors">
@@ -118,7 +113,7 @@ export default function Footer() {
                 <div className="w-8 h-8 rounded-lg bg-(--surface) flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-primary-400" />
                 </div>
-                Kasra no 839, First Floor, Aman Vihar, Kadipur, Delhi
+                Kasra no 839, First Floor, Aman Vihar, Kadipur, Delhi - 110036
               </div>
             </div>
           </div>

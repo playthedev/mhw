@@ -63,7 +63,7 @@ export default function InvoiceClient({
                 MHW Consultancy
               </h1>
               <p className="invoice-header-sub text-[var(--text-muted)] text-xs">Professional Education & Training</p>
-              <p className="invoice-header-sub text-[var(--text-muted)] text-xs mt-1">info@mhwconsultancy.in · +91 70651 27127</p>
+              <p className="invoice-header-sub text-[var(--text-muted)] text-xs mt-1">info@mhwconsultancy.com · +91 70651 27127</p>
             </div>
             <div className="text-left sm:text-right">
               <p className="invoice-header-sub text-[var(--text-muted)] text-xs uppercase tracking-wider mb-1">Tax Invoice</p>

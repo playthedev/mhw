@@ -6,72 +6,35 @@ import { Target, Eye, Heart, Award, Users, Globe, ExternalLink, Mail } from "luc
 const team = [
   {
     name: "Manish Mandal",
-    role: "Founder & Managing Director",
-    bio: "15+ years of experience in NGO compliance, accounting, and corporate advisory. Leads MHW Consultancy's vision and client strategy.",
+    role: "Non-Executive Director",
+    bio: "An accomplished finance, compliance, and governance professional with over 12 years of distinguished experience across the non-profit and corporate sectors. His expertise spans financial management, FCRA compliance, CSR fund administration, taxation, statutory audits, donor reporting, risk management, and regulatory compliance under various statutory frameworks. As Non-Executive Director, Manish provides strategic oversight and independent guidance on financial governance, compliance management, and organizational sustainability.",
     avatar: "MM",
     gradient: "from-blue-500 to-primary-500",
     linkedin: "#",
-    email: "manish@mhwconsultancy.in",
+    email: "info@mhwconsultancy.com",
   },
   {
-    name: "Priya Sharma",
-    role: "Head of Accounting",
-    bio: "Chartered Accountant with 10+ years specializing in non-profit financial management and statutory audit.",
-    avatar: "PS",
+    name: "Hasina",
+    role: "Executive Director",
+    bio: "Executive Director and Lead – Capacity Building Programs at MHW Consultancy. A dedicated development professional with extensive experience designing and implementing skill development, livelihood generation, and women empowerment programs. She leads capacity-building initiatives that equip individuals, community groups, NGOs, and social enterprises with the knowledge and skills required for sustainable growth and self-reliance.",
+    avatar: "H",
     gradient: "from-purple-500 to-pink-500",
     linkedin: "#",
-    email: "priya@mhwconsultancy.in",
-  },
-  {
-    name: "Rahul Verma",
-    role: "Tax Director",
-    bio: "Income Tax & GST practitioner with expertise in corporate and NGO taxation, handling 200+ cases annually.",
-    avatar: "RV",
-    gradient: "from-green-500 to-teal-500",
-    linkedin: "#",
-    email: "rahul@mhwconsultancy.in",
-  },
-  {
-    name: "Anjali Gupta",
-    role: "Legal & Compliance Head",
-    bio: "Corporate lawyer specializing in NGO registration, FCRA compliance, governance frameworks, and regulatory filings.",
-    avatar: "AG",
-    gradient: "from-orange-500 to-gold-500",
-    linkedin: "#",
-    email: "anjali@mhwconsultancy.in",
-  },
-  {
-    name: "Suresh Kumar",
-    role: "Training Director",
-    bio: "Expert trainer in NGO capacity building with over 5,000 professionals trained across India.",
-    avatar: "SK",
-    gradient: "from-pink-500 to-rose-500",
-    linkedin: "#",
-    email: "suresh@mhwconsultancy.in",
-  },
-  {
-    name: "Neha Singh",
-    role: "Business Development",
-    bio: "10+ years in consulting business development, client relations, and strategic partnerships across Delhi NCR.",
-    avatar: "NS",
-    gradient: "from-cyan-500 to-sky-500",
-    linkedin: "#",
-    email: "neha@mhwconsultancy.in",
+    email: "info@mhwconsultancy.com",
   },
 ]
 
 const values = [
-  { icon: Target, title: "Mission", description: "To empower NGOs, businesses, and professionals through expert consulting, compliance guidance, and transformative training programs across India." },
+  { icon: Target, title: "Mission", description: "To empower NGOs, businesses, and professionals through expert advisory services, compliance excellence, and transformative learning opportunities that enable sustainable growth and organizational success." },
   { icon: Eye, title: "Vision", description: "To become India's most trusted consulting partner, known for integrity, expertise, and measurable impact across all sectors." },
   { icon: Heart, title: "Values", description: "We operate on integrity, transparency, and a genuine commitment to our clients' success. Every engagement is a partnership built on trust." },
 ]
 
 const milestones = [
-  { year: "2015", event: "MHW Consultancy founded with a focus on NGO compliance in Delhi" },
-  { year: "2017", event: "Expanded to corporate advisory and GST/income tax services" },
-  { year: "2019", event: "Launched online training platform with 10 courses" },
-  { year: "2021", event: "Crossed 200+ active clients milestone" },
-  { year: "2026", event: "500+ clients, 2800+ students enrolled across India" },
+  { year: "2025", event: "MHW Consultancy founded with a focus on NGO compliance in Delhi" },
+  { year: "2026", event: "Expanding to corporate advisory and GST/income tax services" },
+  { year: "2026", event: "FCRA Management and Reporting" },
+  { year: "2026", event: "Launched online training platform with 10 courses" },
 ]
 
 export default function AboutPage() {
@@ -88,7 +51,7 @@ export default function AboutPage() {
               We Are <span className="gradient-text">MHW Consultancy</span>
             </h1>
             <p className="text-[var(--text-muted)] text-lg leading-relaxed">
-              Founded in 2015, MHW Consultancy Private Limited has grown from a small accounting firm to one of Delhi's leading consulting organizations. We specialize in NGO compliance, accounting, tax advisory, and professional training.
+              MHW Consultancy is a registered Private Limited Company founded in April 2025, providing professional financial, compliance, advisory, and capacity-building services. We specialize in Accounting, Bookkeeping, Taxation, GST Compliance, ROC Filings, FCRA Management, and NGO Support Services.
             </p>
           </motion.div>
         </div>
@@ -123,9 +86,9 @@ export default function AboutPage() {
           {/* Stats row */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {[
-              { icon: Users, value: "500+", label: "Clients Served" },
-              { icon: Award, value: "11", label: "Years Experience" },
-              { icon: Globe, value: "2800+", label: "Students Trained" },
+              { icon: Users, value: "100+", label: "Clients Served" },
+              { icon: Award, value: "12+", label: "Years of Director's NGO Experience" },
+              { icon: Globe, value: "10", label: "Online Courses" },
               { icon: Heart, value: "98%", label: "Client Retention" },
             ].map((stat, i) => {
               const Icon = stat.icon

@@ -36,7 +36,7 @@ const sections = [
       "All fees are listed in Indian Rupees (INR) unless otherwise stated and are inclusive of applicable taxes.",
       "Payments are processed securely through Stripe. By making a payment, you agree to Stripe's Terms of Service.",
       "We reserve the right to change pricing at any time. Price changes will not affect already-confirmed enrolments.",
-      "In case of payment failure or dispute, please contact us at info@mhwconsultancy.in within 7 days.",
+      "In case of payment failure or dispute, please contact us at info@mhwconsultancy.com within 7 days.",
     ],
   },
   {
@@ -155,7 +155,7 @@ export default function TermsPage() {
             <div className="space-y-1 text-sm text-[var(--text-muted)]">
               <p>MHW Consultancy Pvt. Ltd.</p>
               <p>Kasra no 839, First Floor, Aman Vihar, Kadipur, Delhi</p>
-              <p>Email: <a href="mailto:info@mhwconsultancy.in" className="text-primary-400 hover:underline">info@mhwconsultancy.in</a></p>
+              <p>Email: <a href="mailto:info@mhwconsultancy.com" className="text-primary-400 hover:underline">info@mhwconsultancy.com</a></p>
               <p>Phone: <a href="tel:+917065127127" className="text-primary-400 hover:underline">+91 70651 27127</a></p>
             </div>
           </motion.div>

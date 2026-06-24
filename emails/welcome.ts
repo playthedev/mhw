@@ -20,7 +20,7 @@ export function welcomeTemplate(name: string): string {
     </div>
 
     <hr style="${baseStyles.divider}" />
-    <p style="${baseStyles.small}">Need help? Reply to this email or reach us at <a href="mailto:info@mhwconsultancy.in" style="color:#818cf8;">info@mhwconsultancy.in</a></p>
+    <p style="${baseStyles.small}">Need help? Reply to this email or reach us at <a href="mailto:info@mhwconsultancy.com" style="color:#818cf8;">info@mhwconsultancy.com</a></p>
   `
   return emailWrapper(content)
 }

@@ -17,22 +17,19 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 14,
-          background: "linear-gradient(to bottom right, #4f5eff, #9333ea)",
+          background: "#0c1f3f",
         }}
       >
-        <svg
-          width="36"
-          height="36"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        <span
+          style={{
+            fontSize: 38,
+            fontWeight: 800,
+            color: "#f4c542",
+            fontFamily: "sans-serif",
+          }}
         >
-          <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-          <rect width="20" height="14" x="2" y="6" rx="2" />
-        </svg>
+          M
+        </span>
       </div>
     ),
     {

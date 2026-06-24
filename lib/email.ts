@@ -10,7 +10,7 @@ import type { JoinUsSubmission } from "@/lib/models"
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 const FROM = process.env.EMAIL_FROM || "MHW Consultancy <info@mhwconsultancy.com>"
-const OWNER_EMAIL = process.env.OWNER_EMAIL || "info@mhwconsultancy.in"
+const OWNER_EMAIL = process.env.OWNER_EMAIL || "info@mhwconsultancy.com"
 
 export async function sendVerificationEmail(to: string, name: string, token: string) {
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/verify-email?token=${token}`

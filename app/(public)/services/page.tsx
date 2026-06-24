@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import {
-  Calculator, FileCheck, Building2, TrendingUp, Users, BookOpen,
+  Calculator, FileCheck, Building2, TrendingUp, Users, BookOpen, ClipboardList,
   CheckCircle2, ArrowRight, Phone, X, Send, Loader2
 } from "lucide-react"
 import { toast } from "sonner"
@@ -77,10 +77,15 @@ const services = [
     description: "Comprehensive tax planning and compliance services. We help you understand your tax obligations and optimize your tax position within legal boundaries.",
     features: [
       "Income tax filing & planning",
-      "Sales tax registration & returns",
-      "Withholding tax management",
+      "GSTR-1, GSTR-3B & Nil return filing",
+      "QRMP scheme compliance",
+      "Input Tax Credit (ITC) reconciliation",
+      "GST health check & compliance review",
+      "GST notice handling & reply preparation",
+      "Annual Return (GSTR-9) filing",
+      "E-commerce GST compliance",
+      "Vendor and ITC verification",
       "Tax audit representation",
-      "Tax refund claims",
       "Income Tax notices handling",
     ],
     color: "from-orange-500/20 to-yellow-500/10",
@@ -129,6 +134,34 @@ const services = [
     accent: "border-cyan-500/30",
     formService: "Audit Support",
   },
+  {
+    id: "registration",
+    icon: ClipboardList,
+    title: "Registration Services",
+    tagline: "End-to-End Registration Support",
+    description: "From GST and MSME registration to NGO Darpan, FCRA, and statutory registrations under the Income Tax Act — we handle the paperwork so you can focus on running your organization.",
+    features: [
+      "GST Registration",
+      "NGO Darpan Registration",
+      "MSME Registration",
+      "Registration of NGO/Social Enterprise (₹10,000+)",
+      "FCRA Registration (₹25,000+)",
+      "Registration U/S 12AA (₹5,000+)",
+      "Registration of 80G(5) (₹5,000+)",
+      "Registration of Society",
+      "Registration Section-8 Company",
+      "FCRA Compliance Services (₹10,000+)",
+      "FCRA Renewal & FCRA Return Filing",
+      "FCRA Prior Permission",
+      "PAN Card",
+      "TAN Number",
+    ],
+    color: "from-violet-500/20 to-indigo-500/10",
+    iconBg: "bg-violet-500/10 border-violet-500/20",
+    iconColor: "text-violet-400",
+    accent: "border-violet-500/30",
+    formService: "Registration Services",
+  },
 ]
 
 const serviceOptions = [
@@ -138,6 +171,7 @@ const serviceOptions = [
   "Corporate Advisory",
   "Training / Course",
   "Audit Support",
+  "Registration Services",
   "Other",
 ]
 

@@ -35,7 +35,7 @@ export function enrollmentConfirmationTemplate(data: EnrollmentEmailData): strin
     </div>
 
     <hr style="${baseStyles.divider}" />
-    <p style="${baseStyles.small}">Have questions? Contact us at <a href="mailto:info@mhwconsultancy.in" style="color:#818cf8;">info@mhwconsultancy.in</a> or call <a href="tel:+917065127127" style="color:#818cf8;">+91 70651 27127</a>.</p>
+    <p style="${baseStyles.small}">Have questions? Contact us at <a href="mailto:info@mhwconsultancy.com" style="color:#818cf8;">info@mhwconsultancy.com</a> or call <a href="tel:+917065127127" style="color:#818cf8;">+91 70651 27127</a>.</p>
   `
   return emailWrapper(content)
 }

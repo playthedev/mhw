@@ -55,7 +55,7 @@ const sections = [
     content: [
       "You have the right to access, correct, or delete the personal data we hold about you.",
       "You may withdraw consent for marketing communications at any time by clicking 'Unsubscribe' or contacting us directly.",
-      "To exercise any of these rights, please email us at info@mhwconsultancy.in.",
+      "To exercise any of these rights, please email us at info@mhwconsultancy.com.",
     ],
   },
   {
@@ -150,7 +150,7 @@ export default function PrivacyPolicyPage() {
             <div className="space-y-1 text-sm text-[var(--text-muted)]">
               <p>MHW Consultancy Pvt. Ltd.</p>
               <p>Kasra no 839, First Floor, Aman Vihar, Kadipur, Delhi</p>
-              <p>Email: <a href="mailto:info@mhwconsultancy.in" className="text-primary-400 hover:underline">info@mhwconsultancy.in</a></p>
+              <p>Email: <a href="mailto:info@mhwconsultancy.com" className="text-primary-400 hover:underline">info@mhwconsultancy.com</a></p>
               <p>Phone: <a href="tel:+917065127127" className="text-primary-400 hover:underline">+91 70651 27127</a></p>
             </div>
           </motion.div>

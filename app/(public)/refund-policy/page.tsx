@@ -35,7 +35,7 @@ const sections = [
       "Full refund if you cancel within 24 hours of purchase and have not accessed any course content.",
       "50% refund if you cancel within 3 days of purchase and have accessed less than 20% of course content.",
       "No refund is available after 3 days of purchase or if more than 20% of the course content has been accessed.",
-      "To request a refund, email info@mhwconsultancy.in with your order ID and reason for cancellation.",
+      "To request a refund, email info@mhwconsultancy.com with your order ID and reason for cancellation.",
       "Approved refunds are processed within 7–10 business days to the original payment method.",
     ],
   },
@@ -46,7 +46,7 @@ const sections = [
       "You may cancel a consulting engagement within 48 hours of payment for a full refund, provided no work has commenced.",
       "If work has commenced, a pro-rated refund will be issued based on the proportion of work remaining.",
       "No refund is issued once a deliverable (report, filing, document) has been submitted to the client.",
-      "Cancellation requests must be submitted in writing to info@mhwconsultancy.in.",
+      "Cancellation requests must be submitted in writing to info@mhwconsultancy.com.",
     ],
   },
   {
@@ -67,7 +67,7 @@ const sections = [
   {
     title: "How to Cancel",
     content: [
-      "Send an email to info@mhwconsultancy.in with the subject line 'Cancellation Request'.",
+      "Send an email to info@mhwconsultancy.com with the subject line 'Cancellation Request'.",
       "Include your full name, registered email address, order/invoice number, and reason for cancellation.",
       "We will acknowledge your request within 1 business day and confirm eligibility within 3 business days.",
       "Refunds, once approved, are credited within 7–10 business days.",
@@ -176,7 +176,7 @@ export default function RefundPolicyPage() {
               For any refund or cancellation queries, please reach out to our support team:
             </p>
             <div className="space-y-1 text-sm text-[var(--text-muted)]">
-              <p>Email: <a href="mailto:info@mhwconsultancy.in" className="text-primary-400 hover:underline">info@mhwconsultancy.in</a></p>
+              <p>Email: <a href="mailto:info@mhwconsultancy.com" className="text-primary-400 hover:underline">info@mhwconsultancy.com</a></p>
               <p>Phone: <a href="tel:+917065127127" className="text-primary-400 hover:underline">+91 70651 27127</a></p>
               <p className="pt-1 text-xs">Support hours: Monday – Saturday, 10 AM – 6 PM IST</p>
             </div>

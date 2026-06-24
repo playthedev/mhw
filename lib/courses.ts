@@ -20,6 +20,9 @@ export type Course = {
   rating: number
   reviews: number
   price: number
+  originalPrice?: number
+  offerEndsAt?: string   // ISO date — strikethrough pricing shown while offer is active
+  batchStartsAt?: string // ISO date — display only
   instructor: string
   instructorRole: string
   instructorAvatar: string
@@ -128,12 +131,15 @@ export const courses: Course[] = [
     title: "Accounting Basics for Non-Profits",
     category: "Accounting",
     level: "Beginner",
-    duration: "6 weeks",
+    duration: "24 Hours (8 Sessions)",
     lessons: 18,
     students: 0,
     rating: 4.8,
     reviews: 67,
-    price: 12000,
+    price: 11999,
+    originalPrice: 24999,
+    offerEndsAt: "2026-06-30",
+    batchStartsAt: "2026-07-03",
     instructor: "Priya Sharma",
     instructorRole: "Senior Accountant",
     instructorAvatar: "PS",
@@ -205,6 +211,95 @@ export const courses: Course[] = [
     requirements: [
       "No accounting experience needed",
       "Access to a spreadsheet application (Excel or Google Sheets)",
+    ],
+    featured: false,
+  },
+  {
+    id: "tally-prime-gst-cost-centre",
+    title: "Tally Prime with GST, Cost Centre & Business Accounting",
+    category: "Accounting",
+    level: "Beginner",
+    duration: "30 Hours (15 Sessions)",
+    lessons: 15,
+    students: 0,
+    rating: 4.8,
+    reviews: 0,
+    price: 5999,
+    originalPrice: 12000,
+    offerEndsAt: "2026-06-30",
+    batchStartsAt: "2026-07-03",
+    instructor: "Priya Sharma",
+    instructorRole: "Senior Accountant",
+    instructorAvatar: "PS",
+    instructorBio: "Priya is a Chartered Accountant with 9 years of experience in non-profit accounting. She has audited 30+ NGOs and specialises in making financial concepts accessible to non-finance professionals.",
+    badge: "New Batch",
+    badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+    gradient: "from-indigo-500/20 to-violet-500/10",
+    color: "from-indigo-500 to-violet-500",
+    description: "Master Tally Prime for day-to-day accounting, GST compliance, and Cost Centre-based expense tracking. Ideal for students, accountants, NGO finance staff, and small business owners.",
+    about: "This course takes you from accounting fundamentals through to running a full set of books in Tally Prime — including GST returns and Cost Centre / Cost Category allocation for department-wise and project-wise reporting. Built around practical, hands-on exercises rather than theory alone, with real GST and NGO project accounting case studies.",
+    outcomes: [
+      "Understand accounting fundamentals in Tally Prime",
+      "Create and manage company accounts",
+      "Record daily accounting transactions confidently",
+      "Manage GST accounting and compliance, including GSTR-1 and GSTR-3B",
+      "Create and utilise Cost Centres and Cost Categories",
+      "Generate financial reports and GST reports",
+      "Maintain books of accounts efficiently",
+    ],
+    syllabus: [
+      {
+        title: "Module 1 — Introduction to Accounting & Tally Prime",
+        lessons: [
+          { title: "Accounting concepts and golden rules", duration: "18 min", free: true },
+          { title: "Types of accounts and the accounting cycle", duration: "15 min", free: true },
+          { title: "Tally Prime interface walkthrough", duration: "20 min" },
+        ],
+      },
+      {
+        title: "Module 2 — Company Setup & Ledger Management",
+        lessons: [
+          { title: "Company creation, alteration & features", duration: "22 min" },
+          { title: "Security control and data backup/restore", duration: "14 min" },
+          { title: "Groups, ledgers and opening balances", duration: "19 min" },
+        ],
+      },
+      {
+        title: "Module 3 — Vouchers & Inventory",
+        lessons: [
+          { title: "Voucher types: payment, receipt, contra, journal", duration: "20 min" },
+          { title: "Purchase, sales & inventory management", duration: "23 min" },
+          { title: "Stock groups, categories and godowns", duration: "17 min" },
+        ],
+      },
+      {
+        title: "Module 4 — GST Accounting",
+        lessons: [
+          { title: "GST fundamentals and setup in Tally", duration: "21 min" },
+          { title: "GST purchase & sales entries (intra & inter-state)", duration: "25 min" },
+          { title: "GSTR-1, GSTR-3B and reconciliation", duration: "24 min" },
+        ],
+      },
+      {
+        title: "Module 5 — Cost Centre Accounting",
+        lessons: [
+          { title: "Cost Centres and Cost Categories — concepts", duration: "18 min" },
+          { title: "Creating Cost Centres & allocating expenses", duration: "20 min" },
+          { title: "Department-wise and project-wise accounting", duration: "19 min" },
+        ],
+      },
+      {
+        title: "Module 6 — Reconciliation, Payroll & Reporting",
+        lessons: [
+          { title: "Bank reconciliation & outstanding management", duration: "17 min" },
+          { title: "Payroll basics and employee cost allocation", duration: "18 min" },
+          { title: "P&L, Balance Sheet and Cash Flow reports", duration: "22 min" },
+        ],
+      },
+    ],
+    requirements: [
+      "No prior Tally or accounting experience required",
+      "Access to a computer (Tally Prime software covered in course)",
     ],
     featured: false,
   },

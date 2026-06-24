@@ -1,6 +1,11 @@
 @import "tailwindcss";
 /* v2 */
 
+/* Theme-aware logo: swap asset by CSS instead of JS to avoid a flash of the wrong logo on load. */
+.logo-dark { display: none; }
+.dark .logo-dark { display: block; }
+.dark .logo-light { display: none; }
+
 /* Printing a certificate/invoice should show only that content —
    not the dashboard header/sidebar chrome that wraps it. */
 @media print {
