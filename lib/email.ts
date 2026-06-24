@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer"
+import { Resend } from "resend"
 import { verifyEmailTemplate } from "@/emails/verifyEmail"
 import { welcomeTemplate } from "@/emails/welcome"
 import { forgotPasswordTemplate } from "@/emails/forgotPassword"
@@ -7,22 +7,14 @@ import { contactConfirmationTemplate, contactOwnerNotificationTemplate } from "@
 import { joinUsConfirmationTemplate, joinUsOwnerNotificationTemplate } from "@/emails/joinUsNotification"
 import type { JoinUsSubmission } from "@/lib/models"
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT || 465),
-  secure: Number(process.env.SMTP_PORT || 465) === 465,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-})
+const resend = new Resend(process.env.RESEND_API_KEY)
 
-const FROM = process.env.SMTP_FROM || "MHW Consultancy <info@mhwconsultancy.com>"
+const FROM = process.env.EMAIL_FROM || "MHW Consultancy <info@mhwconsultancy.com>"
 const OWNER_EMAIL = process.env.OWNER_EMAIL || "info@mhwconsultancy.in"
 
 export async function sendVerificationEmail(to: string, name: string, token: string) {
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/verify-email?token=${token}`
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to,
     subject: "Verify your email — MHW Consultancy",
@@ -31,7 +23,7 @@ export async function sendVerificationEmail(to: string, name: string, token: str
 }
 
 export async function sendWelcomeEmail(to: string, name: string) {
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to,
     subject: "Welcome to MHW Consultancy!",
@@ -41,7 +33,7 @@ export async function sendWelcomeEmail(to: string, name: string) {
 
 export async function sendForgotPasswordEmail(to: string, name: string, token: string) {
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password?token=${token}`
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to,
     subject: "Reset your password — MHW Consultancy",
@@ -57,14 +49,14 @@ export async function sendEnrollmentConfirmation(data: {
   paymentId: string
 }) {
   const { to, ...rest } = data
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to,
     subject: `Enrolment Confirmed: ${data.courseName} — MHW Consultancy`,
     html: enrollmentConfirmationTemplate(rest),
   })
   // Also notify owner
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to: OWNER_EMAIL,
     subject: `New Enrolment: ${data.courseName}`,
@@ -80,14 +72,14 @@ export async function sendContactEmails(data: {
   message: string
 }) {
   // Confirmation to the user
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to: data.email,
     subject: "We received your message — MHW Consultancy",
     html: contactConfirmationTemplate(data),
   })
   // Notification to owner
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to: OWNER_EMAIL,
     subject: `New Contact: ${data.subject} from ${data.name}`,
@@ -103,14 +95,14 @@ const joinUsCategoryLabels: Record<string, string> = {
 
 export async function sendJoinUsEmails(data: JoinUsSubmission) {
   // Confirmation to the applicant
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to: data.email,
     subject: "We received your application — MHW Consultancy",
     html: joinUsConfirmationTemplate(data),
   })
   // Notification to owner
-  await transporter.sendMail({
+  await resend.emails.send({
     from: FROM,
     to: OWNER_EMAIL,
     subject: `New ${joinUsCategoryLabels[data.category] || data.category} Application: ${data.name}`,
