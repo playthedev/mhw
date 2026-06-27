@@ -20,6 +20,11 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ]
 
+const serviceNavItems = [
+  { label: "All Services", href: "/services" },
+  { label: "Registration Service", href: "/services#registration" },
+]
+
 type JoinUsItem =
   | { label: string; type: "category"; category: JoinUsCategory }
   | { label: string; type: "link"; href: string }
@@ -44,6 +49,7 @@ export default function Navbar() {
   const [user, setUser] = useState<NavUser | null>(null)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const [loggingOut, setLoggingOut] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const [joinUsOpen, setJoinUsOpen] = useState(false)
   const [joinUsMobileOpen, setJoinUsMobileOpen] = useState(false)
   const [joinUsCategory, setJoinUsCategory] = useState<JoinUsCategory | null>(null)
@@ -115,23 +121,71 @@ export default function Navbar() {
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
-                    pathname === link.href ? "text-(--text)" : "text-[var(--text-muted)] hover:text-(--text)"
-                  )}
-                >
-                  {pathname === link.href && (
-                    <motion.span
-                      layoutId="nav-indicator"
-                      className="absolute inset-0 bg-primary-500/10 rounded-lg border border-(--border)"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.label}</span>
-                </Link>
+                link.label === "Services" ? (
+                  <div key={link.href} className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setServicesOpen((o) => !o)}
+                      className={cn(
+                        "relative flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+                        pathname === link.href || servicesOpen ? "text-(--text)" : "text-[var(--text-muted)] hover:text-(--text)"
+                      )}
+                    >
+                      {pathname === link.href && (
+                        <motion.span
+                          layoutId="nav-indicator"
+                          className="absolute inset-0 bg-primary-500/10 rounded-lg border border-(--border)"
+                          transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                        />
+                      )}
+                      <span className="relative z-10">{link.label}</span>
+                      <ChevronDown className={cn("relative z-10 w-3.5 h-3.5 transition-transform", servicesOpen && "rotate-180")} />
+                    </button>
+                    <AnimatePresence>
+                      {servicesOpen && (
+                        <>
+                          <div className="fixed inset-0 z-40" onClick={() => setServicesOpen(false)} />
+                          <motion.div
+                            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute left-0 top-full mt-2 w-56 glass-card rounded-xl border border-(--border) overflow-hidden shadow-xl shadow-black/40 py-1 z-50"
+                          >
+                            {serviceNavItems.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => setServicesOpen(false)}
+                                className="block px-4 py-2.5 text-sm text-[var(--text-muted)] hover:text-(--text) hover:bg-(--surface) transition-all"
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        </>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      "relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+                      pathname === link.href ? "text-(--text)" : "text-[var(--text-muted)] hover:text-(--text)"
+                    )}
+                  >
+                    {pathname === link.href && (
+                      <motion.span
+                        layoutId="nav-indicator"
+                        className="absolute inset-0 bg-primary-500/10 rounded-lg border border-(--border)"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
+                  </Link>
+                )
               ))}
 
               {/* Join Us dropdown */}
@@ -273,6 +327,16 @@ export default function Navbar() {
                     >
                       {link.label}
                     </Link>
+                    {link.label === "Services" && (
+                      <div className="mt-1 pl-4">
+                        <Link
+                          href="/services#registration"
+                          className="block px-4 py-2.5 rounded-xl text-sm text-[var(--text-muted)] hover:text-(--text) hover:bg-(--surface) transition-all"
+                        >
+                          Registration Service
+                        </Link>
+                      </div>
+                    )}
                   </motion.div>
                 ))}
 

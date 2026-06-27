@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import {
   Calculator, FileCheck, Building2, TrendingUp, Users, BookOpen, ClipboardList,
-  CheckCircle2, ArrowRight, Phone, X, Send, Loader2
+  CheckCircle2, ArrowRight, Phone, X, Send, Loader2, Landmark, BadgeCheck,
+  ShieldCheck, RefreshCw, Handshake, IdCard, Hash, FileText
 } from "lucide-react"
 import { toast } from "sonner"
 
@@ -172,7 +173,156 @@ const serviceOptions = [
   "Training / Course",
   "Audit Support",
   "Registration Services",
+  "GST Registration",
+  "NGO Darpan Registration",
+  "MSME Registration",
+  "Registration of NGO/Social Enterprise",
+  "FCRA Registration",
+  "Registration U/S 12AA",
+  "Registration of 80G(5)",
+  "Registration of Society",
+  "Registration Section-8 Company",
+  "FCRA Compliance Services",
+  "FCRA Renewal & FCRA Return Filing",
+  "FCRA Prior Permission",
+  "PAN Card",
+  "TAN Number",
   "Other",
+]
+
+const registrationCategories = [
+  {
+    title: "Basic Registrations",
+    items: [
+      {
+        title: "GST Registration",
+        badge: "Contact Us",
+        description: "GST registration is mandatory for eligible businesses and enables lawful tax collection and input tax credit benefits.",
+        icon: BadgeCheck,
+        color: "text-violet-400",
+        panel: "border-violet-500/20 bg-violet-500/10",
+      },
+      {
+        title: "NGO Darpan Registration",
+        badge: "Contact Us",
+        description: "NGO Darpan registration is mandatory for eligible NGO/Trust/Society and Section 8 company. It enables access to government grants, schemes, and partnerships.",
+        icon: Landmark,
+        color: "text-teal-400",
+        panel: "border-teal-500/20 bg-teal-500/10",
+      },
+      {
+        title: "MSME Registration",
+        badge: "Contact Us",
+        description: "MSME registration is mandatory for eligible businesses/NGOs.",
+        icon: Building2,
+        color: "text-amber-400",
+        panel: "border-amber-500/20 bg-amber-500/10",
+      },
+    ],
+  },
+  {
+    title: "Registration & Procurement Services",
+    items: [
+      {
+        title: "Registration of NGO/Social Enterprise",
+        badge: "₹10000+",
+        description: "Start your social venture with us for growing faster.",
+        icon: Handshake,
+        color: "text-cyan-400",
+        panel: "border-cyan-500/20 bg-cyan-500/10",
+      },
+      {
+        title: "FCRA Registration",
+        badge: "₹25000+",
+        description: "Open up window for foreign funding.",
+        icon: ShieldCheck,
+        color: "text-sky-400",
+        panel: "border-sky-500/20 bg-sky-500/10",
+      },
+      {
+        title: "Registration U/S 12AA",
+        badge: "₹5000+",
+        description: "Statutory requirement. It is compulsory registration for all non-profits.",
+        icon: FileText,
+        color: "text-rose-400",
+        panel: "border-rose-500/20 bg-rose-500/10",
+      },
+      {
+        title: "Registration of 80G(5)",
+        badge: "₹5000+",
+        description: "Give tax benefits to your loved donors and increase your funding flow.",
+        icon: BadgeCheck,
+        color: "text-yellow-400",
+        panel: "border-yellow-500/20 bg-yellow-500/10",
+      },
+      {
+        title: "Registration of Society",
+        badge: "Contact Us",
+        description: "Start empowering community through registering society.",
+        icon: Users,
+        color: "text-green-400",
+        panel: "border-green-500/20 bg-green-500/10",
+      },
+      {
+        title: "Registration Section-8 Company",
+        badge: "Contact Us",
+        description: "Get registered within 30 days and start working with our expert advise.",
+        icon: Building2,
+        color: "text-slate-300",
+        panel: "border-slate-500/20 bg-slate-500/10",
+      },
+    ],
+  },
+  {
+    title: "FCRA Related Services",
+    items: [
+      {
+        title: "FCRA Compliance Services",
+        badge: "₹10000+",
+        description: "Focus on your work while we take care of all FCRA related compliances with our experts.",
+        icon: ShieldCheck,
+        color: "text-yellow-400",
+        panel: "border-yellow-500/20 bg-yellow-500/10",
+      },
+      {
+        title: "FCRA Renewal & FCRA Return Filing",
+        badge: "Contact Us",
+        description: "Our experience will help you to get the speedy renewal.",
+        icon: RefreshCw,
+        color: "text-rose-400",
+        panel: "border-rose-500/20 bg-rose-500/10",
+      },
+      {
+        title: "FCRA Prior Permission",
+        badge: "Contact Us",
+        description: "Before going for this call us whether you qualified or not.",
+        icon: Handshake,
+        color: "text-slate-300",
+        panel: "border-slate-500/20 bg-slate-500/10",
+      },
+    ],
+  },
+  {
+    title: "Tax & Audit Services",
+    items: [
+      {
+        title: "PAN Card",
+        badge: "Contact Us",
+        description: "Now getting e-PAN Card of individual is free. Visit Income Tax India official website.",
+        icon: IdCard,
+        color: "text-rose-400",
+        panel: "border-rose-500/20 bg-rose-500/10",
+      },
+      {
+        title: "TAN Number",
+        badge: "Contact Us",
+        description: "Require to deduct TDS of vendor or services provider.",
+        icon: Hash,
+        color: "text-slate-300",
+        panel: "border-slate-500/20 bg-slate-500/10",
+      },
+    ],
+  },
 ]
 
 type FormState = { name: string; email: string; phone: string; service: string; message: string }
@@ -239,7 +389,7 @@ function ConsultationModal({ service, onClose }: { service: string; onClose: () 
             <h3 className="text-xl sm:text-2xl font-bold text-(--text) mb-3" style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>
               Request Sent!
             </h3>
-            <p className="text-[var(--text-muted)] mb-6">We'll get back to you within 24 hours.</p>
+            <p className="text-[var(--text-muted)] mb-6">We&apos;ll get back to you within 24 hours.</p>
             <button onClick={onClose} className="text-sm text-primary-400 hover:text-primary-300 transition-colors">
               Close
             </button>
@@ -250,7 +400,7 @@ function ConsultationModal({ service, onClose }: { service: string; onClose: () 
               <h2 className="text-lg sm:text-xl font-bold text-(--text)" style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>
                 Book a Free Consultation
               </h2>
-              <p className="text-sm text-[var(--text-muted)] mt-1">Fill in your details and we'll reach out shortly.</p>
+              <p className="text-sm text-[var(--text-muted)] mt-1">Fill in your details and we&apos;ll reach out shortly.</p>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
@@ -320,6 +470,9 @@ function ConsultationModal({ service, onClose }: { service: string; onClose: () 
 
 export default function ServicesPage() {
   const [modalService, setModalService] = useState<string | null>(null)
+  const [activeRegistrationCategory, setActiveRegistrationCategory] = useState(registrationCategories[0].title)
+  const selectedRegistrationCategory =
+    registrationCategories.find((category) => category.title === activeRegistrationCategory) ?? registrationCategories[0]
 
   return (
     <div className="min-h-screen">
@@ -385,7 +538,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div>
-                    <h4 className="text-(--text) font-semibold mb-5 text-sm uppercase tracking-wider">What's Included</h4>
+                    <h4 className="text-(--text) font-semibold mb-5 text-sm uppercase tracking-wider">What&apos;s Included</h4>
                     <div className="grid sm:grid-cols-2 gap-3">
                       {service.features.map((feature) => (
                         <div key={feature} className="flex items-start gap-3">
@@ -394,6 +547,72 @@ export default function ServicesPage() {
                         </div>
                       ))}
                     </div>
+
+                    {service.id === "registration" && (
+                      <div className="mt-8 pt-6 border-t border-(--border-soft)">
+                        <h4 className="text-(--text) font-semibold mb-4 text-sm uppercase tracking-wider">Registration Service Categories</h4>
+                        <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
+                          {registrationCategories.map((category) => (
+                            <button
+                              key={category.title}
+                              type="button"
+                              onClick={() => setActiveRegistrationCategory(category.title)}
+                              className={`flex-shrink-0 rounded-xl border px-4 py-2 text-xs font-semibold transition-all duration-200 ${
+                                selectedRegistrationCategory.title === category.title
+                                  ? "border-violet-500/40 bg-violet-500/15 text-(--text)"
+                                  : "border-(--border-soft) bg-(--surface)/40 text-[var(--text-muted)] hover:border-violet-500/30 hover:text-(--text)"
+                              }`}
+                            >
+                              {category.title}
+                            </button>
+                          ))}
+                        </div>
+
+                        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                          {selectedRegistrationCategory.items.map((option) => {
+                            const OptionIcon = option.icon
+                            return (
+                              <button
+                                key={option.title}
+                                type="button"
+                                onClick={() => setModalService(option.title)}
+                                className="group flex h-full min-h-52 w-full flex-col justify-between rounded-2xl border border-(--border-soft) bg-(--surface)/40 p-4 text-left transition-all duration-200 hover:border-violet-500/30 hover:bg-violet-500/5"
+                              >
+                                <span>
+                                  <span className="mb-4 flex items-start justify-between gap-3">
+                                    <span className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border ${option.panel}`}>
+                                      <OptionIcon className={`h-5 w-5 ${option.color}`} />
+                                    </span>
+                                    <span className="rounded-md bg-green-500/15 px-2 py-1 text-[11px] font-semibold text-green-300">
+                                      {option.badge}
+                                    </span>
+                                  </span>
+                                  <span className="block text-sm font-semibold text-(--text)">{option.title}</span>
+                                  <span className="mt-2 block text-sm leading-relaxed text-[var(--text-muted)]">{option.description}</span>
+                                </span>
+                                <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-xl bg-primary-500/10 px-3 py-2 text-xs font-semibold text-primary-300 transition-colors group-hover:bg-primary-500/20">
+                                  <Send className="h-3.5 w-3.5" />
+                                  Send Request
+                                </span>
+                              </button>
+                            )
+                          })}
+                        </div>
+
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={selectedRegistrationCategory.title}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            transition={{ duration: 0.18 }}
+                            className="sr-only"
+                          >
+                            {selectedRegistrationCategory.title}
+                          </motion.div>
+                        </AnimatePresence>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -409,7 +628,7 @@ export default function ServicesPage() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-(--text) mb-5" style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>
               Not Sure Which Service You Need?
             </h2>
-            <p className="text-[var(--text-muted)] mb-8">Let our experts guide you. Book a free consultation and we'll recommend the right services for your organization.</p>
+            <p className="text-[var(--text-muted)] mb-8">Let our experts guide you. Book a free consultation and we&apos;ll recommend the right services for your organization.</p>
             <button
               onClick={() => setModalService("Other")}
               className="inline-flex items-center gap-2 shimmer-btn text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-primary-500/25 hover:scale-105 transition-all duration-200"
