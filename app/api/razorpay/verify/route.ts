@@ -73,13 +73,17 @@ export async function POST(req: NextRequest) {
         updatedAt: now,
       })
 
-      sendEnrollmentConfirmation({
-        to: customerEmail,
-        name: customerName,
-        courseName: course.title,
-        amount: course.price,
-        paymentId: razorpay_payment_id,
-      }).catch((err) => console.error("Enrollment email error:", err))
+      try {
+        await sendEnrollmentConfirmation({
+          to: customerEmail,
+          name: customerName,
+          courseName: course.title,
+          amount: course.price,
+          paymentId: razorpay_payment_id,
+        })
+      } catch (err) {
+        console.error("Enrollment email error:", err)
+      }
     }
 
     return NextResponse.json({ success: true })

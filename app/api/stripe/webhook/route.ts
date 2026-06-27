@@ -42,13 +42,17 @@ export async function POST(req: NextRequest) {
 
     // Send confirmation emails
     if (customerEmail) {
-      sendEnrollmentConfirmation({
-        to: customerEmail,
-        name: customerName || "Student",
-        courseName,
-        amount,
-        paymentId: session.id,
-      }).catch((err) => console.error("Enrollment email error:", err))
+      try {
+        await sendEnrollmentConfirmation({
+          to: customerEmail,
+          name: customerName || "Student",
+          courseName,
+          amount,
+          paymentId: session.id,
+        })
+      } catch (err) {
+        console.error("Enrollment email error:", err)
+      }
     }
   }
 

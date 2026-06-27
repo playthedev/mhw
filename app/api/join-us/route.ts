@@ -48,8 +48,12 @@ export async function POST(req: NextRequest) {
     const db = await getDb()
     await db.collection("joinus_submissions").insertOne(submission)
 
-    // Send emails (fire and forget — don't fail the request if email fails)
-    sendJoinUsEmails(submission).catch((err) => console.error("Join Us email error:", err))
+    try {
+      await sendJoinUsEmails(submission)
+    } catch (err) {
+      console.error("Join Us email error:", err)
+      return NextResponse.json({ error: "Application saved but email failed to send. We will contact you shortly." }, { status: 500 })
+    }
 
     return NextResponse.json({ success: true })
   } catch (err) {
