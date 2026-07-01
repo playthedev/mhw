@@ -94,18 +94,18 @@ const joinUsCategoryLabels: Record<string, string> = {
 }
 
 export async function sendJoinUsEmails(data: JoinUsSubmission) {
-  // Confirmation to the applicant
-  await resend.emails.send({
-    from: FROM,
-    to: data.email,
-    subject: "We received your application — MHW Consultancy",
-    html: joinUsConfirmationTemplate(data),
-  })
-  // Notification to owner
-  await resend.emails.send({
-    from: FROM,
-    to: OWNER_EMAIL,
-    subject: `New ${joinUsCategoryLabels[data.category] || data.category} Application: ${data.name}`,
-    html: joinUsOwnerNotificationTemplate(data),
-  })
+  await Promise.all([
+    resend.emails.send({
+      from: FROM,
+      to: data.email,
+      subject: "We received your application — MHW Consultancy",
+      html: joinUsConfirmationTemplate(data),
+    }),
+    resend.emails.send({
+      from: FROM,
+      to: OWNER_EMAIL,
+      subject: `New ${joinUsCategoryLabels[data.category] || data.category} Application: ${data.name}`,
+      html: joinUsOwnerNotificationTemplate(data),
+    }),
+  ])
 }
