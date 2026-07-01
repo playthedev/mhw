@@ -22,7 +22,7 @@ const navLinks = [
 
 const serviceNavItems = [
   { label: "All Services", href: "/services" },
-  { label: "Registration Service", href: "/services#registration" },
+  { label: "Registration Service", href: "/services#registration-options" },
 ]
 
 type JoinUsItem =
@@ -330,7 +330,7 @@ export default function Navbar() {
                     {link.label === "Services" && (
                       <div className="mt-1 pl-4">
                         <Link
-                          href="/services#registration"
+                          href="/services#registration-options"
                           className="block px-4 py-2.5 rounded-xl text-sm text-[var(--text-muted)] hover:text-(--text) hover:bg-(--surface) transition-all"
                         >
                           Registration Service
